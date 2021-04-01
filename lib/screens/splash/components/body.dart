@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:men_in_beauty/components/default_button.dart';
 import 'package:men_in_beauty/routes.dart';
 import 'package:men_in_beauty/screens/home/home_screen.dart';
+import 'package:men_in_beauty/screens/sign_in/sign_in_screen.dart';
 
 import '../../../constants.dart';
 import '../../../size_config.dart';
@@ -62,11 +63,13 @@ class _BodyState extends State<Body> {
                     ),
                     DefaultButton(
                         text: "Continue",
-                        width: getProportionScreenWidth(0.45),
+                        width: getProportionScreenWidth(0.6),
                         press: () {
-                          Navigator.pushNamed(context, HomeScreen.routeName);
+                          Navigator.pushNamed(context, SignInScreen.routeName);
                         }),
-                    Spacer()
+                    Spacer(
+                      flex: 3,
+                    )
                   ],
                 ),
               ))

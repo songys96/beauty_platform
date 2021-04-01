@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:men_in_beauty/routes.dart';
 
 import 'screens/splash/splash_screen.dart';
+import 'theme.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,12 +15,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData(
-
-        primarySwatch: Colors.blue,
-      ),
+      theme: theme(),
       routes: routes,
       initialRoute: SplashScreen.routeName,
     );
   }
+
+
 }
