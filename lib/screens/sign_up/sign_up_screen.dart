@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:men_in_beauty/size_config.dart';
 
+import '../../size_config.dart';
 import 'components/body.dart';
 
-class SplashScreen extends StatelessWidget {
-  static String routeName = "/splash";
+class SignUpScreen extends StatelessWidget {
+  static String routeName = "/sign_up";
 
   @override
   Widget build(BuildContext context) {
@@ -12,6 +12,9 @@ class SplashScreen extends StatelessWidget {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Body(),
+      appBar: AppBar(
+        title: Text("Sign Up"),
+      ),
     );
   }
 }

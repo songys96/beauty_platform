@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:men_in_beauty/components/default_button.dart';
 import 'package:men_in_beauty/routes.dart';
+import 'package:men_in_beauty/screens/complete_profile/complete_profile_screen.dart';
 import 'package:men_in_beauty/screens/home/home_screen.dart';
 import 'package:men_in_beauty/screens/sign_in/sign_in_screen.dart';
 
@@ -65,7 +66,8 @@ class _BodyState extends State<Body> {
                         text: "Continue",
                         width: getProportionScreenWidth(0.6),
                         press: () {
-                          Navigator.pushNamed(context, SignInScreen.routeName);
+                          // todo: will change to signin page
+                          Navigator.popAndPushNamed(context, CompleteProfileScreen.routeName);
                         }),
                     Spacer(
                       flex: 3,

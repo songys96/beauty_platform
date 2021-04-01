@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:men_in_beauty/components/social_card.dart';
+import 'package:men_in_beauty/screens/sign_up/sign_up_screen.dart';
 import 'package:men_in_beauty/size_config.dart';
 
 import 'sign_in_form.dart';
@@ -59,7 +60,9 @@ class _BodyState extends State<Body> {
                   ),
                 ],
               ),
-              TextButton(onPressed: () {}, child: Text("회원가입 하러가기"))
+              TextButton(onPressed: () {
+                Navigator.popAndPushNamed(context, SignUpScreen.routeName);
+              }, child: Text("회원가입 하러가기"))
             ],
           ),
         ),

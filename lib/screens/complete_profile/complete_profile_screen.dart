@@ -3,8 +3,8 @@ import 'package:men_in_beauty/size_config.dart';
 
 import 'components/body.dart';
 
-class SplashScreen extends StatelessWidget {
-  static String routeName = "/splash";
+class CompleteProfileScreen extends StatelessWidget {
+  static String routeName = "/complete_profile";
 
   @override
   Widget build(BuildContext context) {
@@ -12,6 +12,9 @@ class SplashScreen extends StatelessWidget {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Body(),
+      appBar: AppBar(
+        title: Text("Profile"),
+      ),
     );
   }
 }

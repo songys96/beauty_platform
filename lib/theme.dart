@@ -6,6 +6,8 @@ ThemeData theme() {
     inputDecorationTheme: inputDecorationTheme(),
     visualDensity: VisualDensity.adaptivePlatformDensity,
     primarySwatch: Colors.grey,
+    appBarTheme: appBarTheme(),
+    textTheme: textTheme()
   );
 }
 
@@ -30,3 +32,16 @@ InputDecorationTheme inputDecorationTheme() {
   );
 }
 
+
+AppBarTheme appBarTheme(){
+  return AppBarTheme(
+    centerTitle: true,
+    color: Colors.white,
+  );
+}
+
+TextTheme textTheme(){
+  return TextTheme(
+    bodyText1: TextStyle()
+  );
+}
