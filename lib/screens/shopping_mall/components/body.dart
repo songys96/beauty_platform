@@ -12,6 +12,7 @@ class _BodyState extends State<Body> {
     return SafeArea(
         child: CustomScrollView(slivers: [
       SliverAppBar(
+        backgroundColor: Colors.white,
           expandedHeight: 60,
           floating: true,
           flexibleSpace: FlexibleSpaceBar(

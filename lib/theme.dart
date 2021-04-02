@@ -36,7 +36,7 @@ InputDecorationTheme inputDecorationTheme() {
 AppBarTheme appBarTheme(){
   return AppBarTheme(
     centerTitle: true,
-    color: Colors.white,
+    color: kPrimaryColor,
   );
 }
 
