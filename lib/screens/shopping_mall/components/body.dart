@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:men_in_beauty/screens/shopping_mall/components/sliver_title.dart';
 import 'package:men_in_beauty/size_config.dart';
 
 class Body extends StatefulWidget {
@@ -19,15 +20,7 @@ class _BodyState extends State<Body> {
             background: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                buildSliverTitle(title: "베이스", icon: Icons.face),
-                buildSliverTitle(
-                    title: "스킨케어", icon: Icons.clean_hands_rounded),
-                buildSliverTitle(title: "올인원", icon: Icons.looks_one),
-                buildSliverTitle(title: "쉐딩", icon: Icons.wb_shade),
-                buildSliverTitle(title: "더보기", icon: Icons.add),
-                //clean_hands_rounded looks_one wb_shade add
-              ],
+              children: buildSliverTitles()
             ),
           )),
       SliverGrid(
@@ -46,21 +39,15 @@ class _BodyState extends State<Body> {
     ]));
   }
 
-  Padding buildSliverTitle({String title, IconData icon}) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            Icon(
-              icon,
-              size: 22,
-            ),
-            Text(title)
-          ],
-        ),
-      ),
-    );
+  List<Widget> buildSliverTitles(){
+    return [
+      SliverTitle(title: "베이스", icon: Icons.face),
+      SliverTitle(
+          title: "스킨케어", icon: Icons.clean_hands_rounded),
+      SliverTitle(title: "올인원", icon: Icons.looks_one),
+      SliverTitle(title: "쉐딩", icon: Icons.wb_shade),
+      SliverTitle(title: "더보기", icon: Icons.add),
+    ];
   }
 
   Padding buildItem(int index) {
