@@ -42,6 +42,9 @@ AppBarTheme appBarTheme(){
 
 TextTheme textTheme(){
   return TextTheme(
-    bodyText1: TextStyle()
+    subtitle2: TextStyle(),
+    bodyText1: TextStyle(),
+    headline6: TextStyle()
+
   );
 }

@@ -1,48 +1,53 @@
 import 'package:flutter/material.dart';
+import 'package:men_in_beauty/screens/main_screens/magazine/components/text_styles.dart';
 
 import 'body.dart';
-import 'custom_magazine_text.dart';
+import '../../../../components/custom_magazine_text.dart';
 
 class ArticleBox extends StatelessWidget {
   const ArticleBox({
-    Key key, this.index, this.title, this.sort, this.view,
+    Key key, this.index, this.title, this.sort, this.view, this.press,
   }) : super(key: key);
 
   final int index;
   final String title;
   final String sort;
   final String view;
+  final Function press;
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-        height: 105,
-        child: Stack(
-          fit: StackFit.expand,
-          children: [
-            Image.asset("assets/images/articles/article$index.jpeg", fit: BoxFit.cover,),
-            Positioned(
-              left: 20,
-              bottom: 6,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  CustomMagazineText(sampleList[index][0], 20),
-                  Row(
-                    children: [
-                      // buildCustomText(sort, 14),
-                      SizedBox(width: 6,),
-                      Padding(
-                        padding: const EdgeInsets.only(top:2.0),
-                        child: CustomMagazineText(view, 14),
-                      )
-                    ],
-                  ),
-                ],
+    return GestureDetector(
+      onTap: press,
+      child: SizedBox(
+          height: 105,
+          child: Stack(
+            fit: StackFit.expand,
+            children: [
+              Image.asset("assets/images/articles/article$index.jpeg", fit: BoxFit.cover,),
+              Positioned(
+                left: 20,
+                bottom: 6,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(sampleList[index][0], style: bannerTitleTextStyle(),),
+                    Row(
+                      children: [
+                        // buildCustomText(sort, 14),
+                        SizedBox(width: 6,),
+                        Padding(
+                          padding: const EdgeInsets.only(top:2.0),
+                          child: Text(view,style: bannerBasicTextStyle()),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
-        )
+            ],
+          )
+      ),
     );
   }
 }

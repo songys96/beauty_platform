@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:men_in_beauty/screens/main_screens/magazine/magazine_detail.dart';
 
 import 'screens/auth_screens/complete_profile/complete_profile_screen.dart';
 import 'screens/auth_screens/sign_in/sign_in_screen.dart';
@@ -23,4 +24,7 @@ final Map<String, WidgetBuilder> routes = {
   ShoppingMallScreen.routeName : (context) => ShoppingMallScreen(),
   ClassesScreen.routeName : (context) => ClassesScreen(),
   MagazineScreen.routeName : (context) => MagazineScreen(),
+
+  //DetailScreens
+  MagazineDetail.routeName : (context) => MagazineDetail(),
 };

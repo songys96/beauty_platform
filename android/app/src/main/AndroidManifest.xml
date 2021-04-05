@@ -2,6 +2,7 @@
     package="com.lifelibrary.men_in_beauty">
    <application
         android:label="men_in_beauty"
+       android:usesCleartextTraffic="true"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

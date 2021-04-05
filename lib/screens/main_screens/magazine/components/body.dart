@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:men_in_beauty/screens/main_screens/magazine/magazine_detail.dart';
 
 import 'article_box.dart';
-import 'custom_magazine_text.dart';
+import '../../../../components/custom_magazine_text.dart';
 
 class Body extends StatefulWidget {
   @override
@@ -19,7 +20,9 @@ class _BodyState extends State<Body> {
                 crossAxisCount: 1, childAspectRatio: 2 / 1.02),
             delegate:
                 SliverChildBuilderDelegate((BuildContext context, int index) {
-              return ArticleBox(index: index, title: "It is title", sort:"기초", view: "30 views");
+              return ArticleBox(index: index, title: "It is title", sort:"기초", view: "30 views", press: (){
+                Navigator.pushNamed(context, MagazineDetail.routeName);
+              },);
             }, childCount: 4))
       ],
     ));

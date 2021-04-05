@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:men_in_beauty/components/custom_sliver_title.dart';
 import 'package:men_in_beauty/size_config.dart';
 
-import 'sliver_title.dart';
+import '../../../../components/custom_sliver_app_bar.dart';
 
 class Body extends StatefulWidget {
   @override
@@ -13,17 +14,7 @@ class _BodyState extends State<Body> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: CustomScrollView(slivers: [
-      SliverAppBar(
-        backgroundColor: Colors.white,
-          expandedHeight: 60,
-          floating: true,
-          flexibleSpace: FlexibleSpaceBar(
-            background: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: buildSliverTitles()
-            ),
-          )),
+      MySliverAppBar(sliverTitles: demoSliverTitles(),),
       SliverGrid(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
@@ -38,17 +29,6 @@ class _BodyState extends State<Body> {
         }, childCount: 6),
       ),
     ]));
-  }
-
-  List<Widget> buildSliverTitles(){
-    return [
-      SliverTitle(title: "베이스", icon: Icons.face),
-      SliverTitle(
-          title: "스킨케어", icon: Icons.clean_hands_rounded),
-      SliverTitle(title: "올인원", icon: Icons.looks_one),
-      SliverTitle(title: "쉐딩", icon: Icons.wb_shade),
-      SliverTitle(title: "더보기", icon: Icons.add),
-    ];
   }
 
   Padding buildItem(int index) {
@@ -121,6 +101,8 @@ class _BodyState extends State<Body> {
   }
 }
 
+
+
 List li = [
   [80000, 56000, 30, "파워 옴므 올인원 클리닉"],
   [55000, 49500, 10, "다슈 비타 플렉스 올인원 바디워시"],
@@ -129,3 +111,14 @@ List li = [
   [50000, 40000, 20, "우르오 헤어 케어 저자극 샴푸"],
   [35000, 28000, 20, "그라펜 포마드 시워터"]
 ];
+
+List<Widget> demoSliverTitles(){
+  return [
+    SliverTitle(title: "베이스", icon: Icons.face),
+    SliverTitle(
+        title: "스킨케어", icon: Icons.clean_hands_rounded),
+    SliverTitle(title: "올인원", icon: Icons.looks_one),
+    SliverTitle(title: "쉐딩", icon: Icons.wb_shade),
+    SliverTitle(title: "더보기", icon: Icons.add),
+  ];
+}
