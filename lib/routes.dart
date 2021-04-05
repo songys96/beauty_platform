@@ -1,13 +1,15 @@
 import 'package:flutter/widgets.dart';
-import 'package:men_in_beauty/screens/classes/classes_screen.dart';
-import 'package:men_in_beauty/screens/complete_profile/complete_profile_screen.dart';
-import 'package:men_in_beauty/screens/home/home_screen.dart';
-import 'package:men_in_beauty/screens/magazine/magazine_screen.dart';
-import 'package:men_in_beauty/screens/shopping_mall/shopping_mall_screen.dart';
-import 'package:men_in_beauty/screens/sign_in/sign_in_screen.dart';
-import 'package:men_in_beauty/screens/sign_up/sign_up_screen.dart';
-import 'package:men_in_beauty/screens/splash/splash_screen.dart';
-import 'package:men_in_beauty/screens/store/store_screen.dart';
+
+import 'screens/auth_screens/complete_profile/complete_profile_screen.dart';
+import 'screens/auth_screens/sign_in/sign_in_screen.dart';
+import 'screens/auth_screens/sign_up/sign_up_screen.dart';
+import 'screens/auth_screens/splash/splash_screen.dart';
+import 'screens/main_screens/classes/classes_screen.dart';
+import 'screens/main_screens/home/home_screen.dart';
+import 'screens/main_screens/magazine/magazine_screen.dart';
+import 'screens/main_screens/shopping_mall/shopping_mall_screen.dart';
+import 'screens/main_screens/store/store_screen.dart';
+
 
 final Map<String, WidgetBuilder> routes = {
   SplashScreen.routeName : (context) => SplashScreen(),
