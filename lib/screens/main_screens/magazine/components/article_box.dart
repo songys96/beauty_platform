@@ -6,17 +6,16 @@ import '../../../../components/custom_magazine_text.dart';
 
 class ArticleBox extends StatelessWidget {
   const ArticleBox({
-    Key key, this.index, this.title, this.sort, this.view, this.press,
+    Key key, this.index, this.snapshot, this.press,
   }) : super(key: key);
 
   final int index;
-  final String title;
-  final String sort;
-  final String view;
+  final AsyncSnapshot snapshot;
   final Function press;
 
   @override
   Widget build(BuildContext context) {
+    print(" ??????????????????????????? ${snapshot.data}");
     return GestureDetector(
       onTap: press,
       child: SizedBox(
@@ -38,7 +37,7 @@ class ArticleBox extends StatelessWidget {
                         SizedBox(width: 6,),
                         Padding(
                           padding: const EdgeInsets.only(top:2.0),
-                          child: Text(view,style: bannerBasicTextStyle()),
+                          child: Text("30views",style: bannerBasicTextStyle()),
                         )
                       ],
                     ),
