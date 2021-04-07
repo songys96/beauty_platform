@@ -15,15 +15,12 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MagazineProvider(
-      bloc: MagazineBloc(MagazineAPI()),
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
-        theme: theme(),
-        routes: routes,
-        initialRoute: HomeScreen.routeName,
-      ),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Flutter Demo',
+      theme: theme(),
+      routes: routes,
+      initialRoute: HomeScreen.routeName,
     );
   }
 

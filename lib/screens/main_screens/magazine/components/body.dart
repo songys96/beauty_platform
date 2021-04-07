@@ -1,14 +1,11 @@
 import 'dart:async';
-import 'dart:convert';
 
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:men_in_beauty/blocs/magazine_provider.dart';
 import 'package:men_in_beauty/models/Magazine.dart';
 import 'package:men_in_beauty/screens/main_screens/magazine/magazine_detail.dart';
 
 import 'article_box.dart';
-import '../../../../components/custom_magazine_text.dart';
 
 class Body extends StatefulWidget {
   @override
@@ -16,29 +13,8 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
-  // todo: create Stream class
-  final StreamController<List<Magazine>> _streamController = StreamController();
-
-  // todo: create bloc.dart
-  Stream magazineStream(List<Magazine> magazines) {
-    magazines.forEach((magazine) async* {
-      yield magazine;
-    });
-  }
-
-  ArticleBox _buildArticleBox(idx, snapshot) {
-    return ArticleBox(
-      index: idx,
-      snapshot: snapshot,
-      press: () {
-        Navigator.pushNamed(context, MagazineDetail.routeName);
-      },
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
-    List cur = [];
     final magazineBloc = MagazineProvider.of(context);
 
     return SafeArea(
@@ -60,7 +36,9 @@ class _BodyState extends State<Body> {
                 return SliverToBoxAdapter(child: Text("no data"));
               return SliverList(
                 delegate: SliverChildBuilderDelegate(
-                    (context, idx) => _buildArticleBox(idx, snapshot),
+                    (context, idx) => ArticleBox(index:idx, snapshot:snapshot, press: () {
+                      Navigator.pushNamed(context, MagazineDetail.routeName);
+                    },),
                     childCount: snapshot.data.length),
               );
             })
