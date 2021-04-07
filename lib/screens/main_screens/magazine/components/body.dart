@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:men_in_beauty/blocs/magazine_provider.dart';
 import 'package:men_in_beauty/models/Magazine.dart';
 import 'package:men_in_beauty/screens/main_screens/magazine/magazine_detail.dart';
 
@@ -16,20 +17,7 @@ class Body extends StatefulWidget {
 
 class _BodyState extends State<Body> {
   // todo: create Stream class
-  final StreamController<Magazine> _streamController = StreamController();
-
-  // todo: create api.dart
-  Future<List<Magazine>> _getData() async {
-    List<Magazine> list = [];
-    await Dio()
-        .get("http://localhost:3030/magazines/get")
-        .then((res) => res.data)
-        .then((magazines) {
-      magazines.forEach(
-          (magazine_json) => list.add(Magazine.fromJson(magazine_json)));
-    }).then((a) => print(list));
-    return list;
-  }
+  final StreamController<List<Magazine>> _streamController = StreamController();
 
   // todo: create bloc.dart
   Stream magazineStream(List<Magazine> magazines) {
@@ -38,8 +26,21 @@ class _BodyState extends State<Body> {
     });
   }
 
+  ArticleBox _buildArticleBox(idx, snapshot) {
+    return ArticleBox(
+      index: idx,
+      snapshot: snapshot,
+      press: () {
+        Navigator.pushNamed(context, MagazineDetail.routeName);
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+    List cur = [];
+    final magazineBloc = MagazineProvider.of(context);
+
     return SafeArea(
         child: CustomScrollView(
       slivers: [
@@ -47,30 +48,21 @@ class _BodyState extends State<Body> {
           child: TextButton(
             child: Text("submit"),
             onPressed: () {
-              _getData().then((value) {
-                value.forEach((element) {
-                  _streamController.add(element);
-                });
-              });
+              magazineBloc.getMagazines();
             },
           ),
         ),
         StreamBuilder<Object>(
-            stream: _streamController.stream,
-            builder: (context, snapshot) {
-              return SliverGrid(
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 1, childAspectRatio: 2 / 1.02),
-                  delegate: SliverChildBuilderDelegate(
-                      (BuildContext context, int index) {
-                    return ArticleBox(
-                      index: index,
-                      snapshot: snapshot,
-                      press: () {
-                        Navigator.pushNamed(context, MagazineDetail.routeName);
-                      },
-                    );
-                  }, childCount: 4));
+            // stream: _streamController.stream,
+            stream: magazineBloc.stream,
+            builder: (context, AsyncSnapshot snapshot) {
+              if (!snapshot.hasData)
+                return SliverToBoxAdapter(child: Text("no data"));
+              return SliverList(
+                delegate: SliverChildBuilderDelegate(
+                    (context, idx) => _buildArticleBox(idx, snapshot),
+                    childCount: snapshot.data.length),
+              );
             })
       ],
     ));

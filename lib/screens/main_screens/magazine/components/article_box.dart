@@ -15,7 +15,6 @@ class ArticleBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(" ??????????????????????????? ${snapshot.data}");
     return GestureDetector(
       onTap: press,
       child: SizedBox(
@@ -23,14 +22,14 @@ class ArticleBox extends StatelessWidget {
           child: Stack(
             fit: StackFit.expand,
             children: [
-              Image.asset("assets/images/articles/article$index.jpeg", fit: BoxFit.cover,),
+              Image.asset("assets/images/articles/article1.jpeg", fit: BoxFit.cover,),
               Positioned(
                 left: 20,
                 bottom: 6,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(sampleList[index][0], style: bannerTitleTextStyle(),),
+                    Text(snapshot.data[index].reviewSetKey, style: bannerTitleTextStyle(),),
                     Row(
                       children: [
                         // buildCustomText(sort, 14),
